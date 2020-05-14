@@ -1,4 +1,4 @@
-<#import "parts/common.ftlh" as c>error
+<#import "parts/common.ftlh" as c>
 
 <@c.page>
 <div>

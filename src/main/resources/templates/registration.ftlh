@@ -1,16 +1,8 @@
 <#import "parts/common.ftlh" as c>
+<#import "parts/login.ftlh" as l>
 
 <@c.page>
-<head>
-    <title>Registration</title>
-</head>
-<body>
 Add new user
-<form action="registration" method="post">
-    <div><label>Имя пользователя : <input type="text" name="username"/> </label></div>
-    <div><label>Пароль : <input type="password" name="password"/> </label></div>
-    <input type="hidden" name="_csrf" value="${_csrf.token}" />
-    <div><input type="submit" value="Ввести"></div>
-</form>
-</body>
+${message}
+<@l.login "/registration" />
 </@c.page>

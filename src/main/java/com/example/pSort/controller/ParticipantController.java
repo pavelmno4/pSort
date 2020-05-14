@@ -22,13 +22,13 @@ public class ParticipantController {
         return "/greeting";
     }
 
-    @GetMapping("/participantList")
+    @GetMapping("/participant-list")
     public String participantList(Model model) {
         Iterable<Participant> participants = participantRepo.findAll();
 
         model.addAttribute("participants", participants);
 
-        return "participantsList";
+        return "participant-list";
     }
 
     @GetMapping("/add-participant")
@@ -50,7 +50,12 @@ public class ParticipantController {
 
         participantRepo.save(participant);
 
-        return "add-participant";
+        return "redirect:/successful-registration";
+    }
+
+    @GetMapping("/successful-registration")
+    public String successReg() {
+        return "successful-registration";
     }
 
 
