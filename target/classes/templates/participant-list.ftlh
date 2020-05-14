@@ -7,6 +7,7 @@
         <input type="submit" value="Выйти"/>
     </form>
 </div>
+<span><a href="/user">User list</a></span>
 <table border="1">
     <caption>Список участников</caption>
     <tr>
@@ -17,7 +18,7 @@
         <th>Команда</th>
         <th>Вес</th>
     </tr>
-    <#list participants as participant>
+<#list participants as participant>
     <tr>
         <td>${participant.lastName!""}</td>
         <td>${participant.firstName!""}</td>
