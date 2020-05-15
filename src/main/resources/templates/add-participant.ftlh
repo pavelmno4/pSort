@@ -1,25 +1,45 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-<div>
     <form method="post">
-        <span>Фамилия</span>
-        <input type="text" name="lastName" />
-        <span>Имя</span>
-        <input type="text" name="firstName" />
-        <span>Возраст</span>
-        <input type="number" name="age" />
-        <span>Пол</span>
-        <select name="sex">
-            <option value="MAN">М</option>
-            <option value="WOMAN">Ж</option>
-        </select>
-        <span>Команда</span>
-        <input type="text" name="team" />
-        <span>Вес</span>
-        <input type="number" name="weight" >
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button type="submit">Добавить</button>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Фамилия:</label>
+            <div class="col-sm-4">
+                <input type="text" name="lastName" class="form-control" placeholder="Фамилия"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Имя:</label>
+            <div class="col-sm-4">
+                <input type="text" name="firstName" class="form-control" placeholder="Имя"/>
+            </div>
+        </div>
+        <div>
+            <label class="label mr-5">Пол:</label>
+            <select class="mdb-select ml-5" name="sex">
+                <option value="MAN">М</option>
+                <option value="WOMAN">Ж</option>
+            </select>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Возраст:</label>
+            <div class="col-sm-4">
+                <input type="text" name="age" class="form-control" placeholder="12"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Вес:</label>
+            <div class="col-sm-4">
+                <input type="text" name="weight" class="form-control" placeholder="42"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Команда:</label>
+            <div class="col-sm-4">
+                <input type="text" name="team" class="form-control" placeholder="Рябина"/>
+            </div>
+        </div>
+            <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <button class="btn btn-primary" type="submit">Добавить</button>
     </form>
-</div>
 </@c.page>

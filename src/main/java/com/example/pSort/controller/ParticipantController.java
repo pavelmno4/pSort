@@ -1,7 +1,6 @@
 package com.example.pSort.controller;
 
 import com.example.pSort.domain.Participant;
-import com.example.pSort.domain.Sex;
 import com.example.pSort.repository.ParticipantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,12 +49,12 @@ public class ParticipantController {
 
         participantRepo.save(participant);
 
-        return "redirect:/successful-registration";
+        return "redirect:/successful-part-reg";
     }
 
-    @GetMapping("/successful-registration")
+    @GetMapping("/successful-part-reg")
     public String successReg() {
-        return "successful-registration";
+        return "successful-part-reg";
     }
 
 

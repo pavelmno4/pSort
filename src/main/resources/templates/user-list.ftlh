@@ -1,10 +1,13 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-List of users
 
-<table>
-    <thead>
+<a href="/registration">Add new user</a>
+
+<p>List of users</p>
+
+<table class="table">
+    <thead class="thead-light">
     <tr>
         <th>Name</th>
         <th>Role</th>
