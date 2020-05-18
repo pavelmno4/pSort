@@ -1,6 +1,7 @@
 package com.example.pSort.domain;
 
 import javax.persistence.*;
+import java.util.Random;
 
 @Entity
 @Table(name = "participants")
@@ -82,4 +83,5 @@ public class Participant {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
 }
