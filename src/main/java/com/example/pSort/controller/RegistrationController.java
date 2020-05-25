@@ -1,8 +1,7 @@
 package com.example.pSort.controller;
 
-import com.example.pSort.domain.Role;
 import com.example.pSort.domain.User;
-import com.example.pSort.repository.UserRepo;
+import com.example.pSort.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -10,13 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Collections;
-
 @Controller
 @PreAuthorize("hasAuthority('ADMIN')")
 public class RegistrationController {
     @Autowired
-    private UserRepo userRepo;
+    private UserService userService;
 
     @GetMapping("/registration")
     public String registration() {
@@ -25,16 +22,13 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user, Model model) {
-        User userFromDb = userRepo.findByUsername(user.getUsername());
 
-        if(userFromDb != null) {
+
+        if(!userService.addUser(user)) {
             model.addAttribute("message", "Пользователь уже сущестует!");
             return "registration";
         }
 
-        user.setRoles(Collections.singleton(Role.USER));
-        user.setActive(true);
-        userRepo.save(user);
 
         return "redirect:/login";
     }

@@ -15,10 +15,12 @@
             <li class="nav-item">
             <a class="nav-link" href="/add-participant">Добавить участника</a>
             </li>
-            <#if isAdmin>
+            <#if user??>
             <li class="nav-item">
                 <a class="nav-link" href="/participant-list">Список участинков</a>
             </li>
+            </#if>
+            <#if isAdmin>
             <li class="nav-item">
                 <a class="nav-link" href="/user">Пользователи</a>
             </li>
