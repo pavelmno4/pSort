@@ -41,6 +41,7 @@
         <option value="85-200">свыше 85</option>
     </select>
     <button class="btn btn-primary m-2" type="submit" formaction="/participant-list">Найти</button>
+    <button class="btn btn-info m-2" type="submit" formaction="/myTest">Создать</button>
 </form>
 
 <table class="table">

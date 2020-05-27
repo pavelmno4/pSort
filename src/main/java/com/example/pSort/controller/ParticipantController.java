@@ -61,5 +61,4 @@ public class ParticipantController {
         return "successful-part-reg";
     }
 
-
 }
