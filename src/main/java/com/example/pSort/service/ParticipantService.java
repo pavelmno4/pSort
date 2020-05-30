@@ -13,33 +13,35 @@ public class ParticipantService {
     private ParticipantRepo participantRepo;
 
 
-    public List<Participant> getParticipants(String sex, String ageInterval, String weightCategory) {
+    public List<Participant> getParticipants(String sex, String ageInterval, String weightCategory) {   //Возвращает список
+                                                                                                        //участников с
+                                                                                                        //определёнными параметрами
         List<Participant> participants;
 
-        participants = participantRepo.findAll();
+        participants = participantRepo.findAll();                                           //Все участники
 
         if(sex != null && !sex.isEmpty()) {
-            participants = participantRepo.findBySex(sex);
+            participants = participantRepo.findBySex(sex);                           //Поиск по полу
         }
 
         if(ageInterval != null && !ageInterval.isEmpty()) {
-            String[] age = ageInterval.split("-");
+            String[] age = ageInterval.split("-");                          //Поиск по возрасту
             participants = participantRepo.findByAgeOrAge(Integer.parseInt(age[0]), Integer.parseInt(age[1]));
         }
 
         if(weightCategory != null && !weightCategory.isEmpty()) {
-            String[] weight = weightCategory.split("-");
+            String[] weight = weightCategory.split("-");                //Поиск по весовой категории
             participants = participantRepo.findByWeightBetween(Integer.parseInt(weight[0]), Integer.parseInt(weight[1]));
         }
 
         if(sex != null && !sex.isEmpty() & ageInterval != null && !ageInterval.isEmpty()) {
-            String[] age = ageInterval.split("-");
+            String[] age = ageInterval.split("-");                  //Поиск по полу и возрасту
 
             participants = participantRepo.findBySexAndAge(sex, Integer.parseInt(age[0]), Integer.parseInt(age[1]));
         }
 
         if(ageInterval != null && !ageInterval.isEmpty() &
-                weightCategory != null && !weightCategory.isEmpty()) {
+                weightCategory != null && !weightCategory.isEmpty()) {          //Поиск по полу, возрасту и весу
             String[] age = ageInterval.split("-");
             String[] weight = weightCategory.split("-");
 

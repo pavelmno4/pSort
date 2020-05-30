@@ -3,12 +3,11 @@ package com.example.pSort.repository;
 import com.example.pSort.domain.Participant;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
-import javax.servlet.http.Part;
 import java.util.List;
 
-public interface ParticipantRepo extends JpaRepository<Participant, Long> {
+public interface ParticipantRepo extends JpaRepository<Participant, Long> {  //Связь между классом участника
+                                                                             //и базой данных
 
     List<Participant> findBySex(String sex);
 

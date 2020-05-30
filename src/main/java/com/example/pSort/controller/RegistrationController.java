@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@PreAuthorize("hasAuthority('ADMIN')")
 public class RegistrationController {
     @Autowired
     private UserService userService;
@@ -20,7 +19,7 @@ public class RegistrationController {
         return "registration";
     }
 
-    @PostMapping("/registration")
+    @PostMapping("/registration")                   //Регистрация пользователя
     public String addUser(User user, Model model) {
 
 

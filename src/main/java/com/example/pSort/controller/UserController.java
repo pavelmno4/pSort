@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @Controller
-@PreAuthorize("hasAuthority('ADMIN')")
+@PreAuthorize("hasAuthority('ADMIN')")          //Если админ, то можно получить список пользователей,
+                                                //их роли, а также изменить роли
 @RequestMapping("/user")
 public class UserController {
     @Autowired

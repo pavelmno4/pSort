@@ -22,9 +22,10 @@ public class ParticipantController {
         return "/greeting";
     }
 
-    @GetMapping("/participant-list")
-    public String participantList(@RequestParam(required = false) String sex,
-                                  @RequestParam(required = false) String ageInterval,
+    @GetMapping("/participant-list")                                                        //Возвращает список учатсников
+                                                                                            //с определёнными параметрами
+    public String participantList(@RequestParam(required = false) String sex,               //Параметры, принимаемые
+                                  @RequestParam(required = false) String ageInterval,       //методом
                                   @RequestParam(required = false) String weightCategory,
                                   Model model) {
         List<Participant> participants = participantService.getParticipants(sex, ageInterval, weightCategory);
@@ -34,7 +35,7 @@ public class ParticipantController {
         return "participant-list";
     }
 
-    @GetMapping("/add-participant")
+    @GetMapping("/add-participant")                                     //Страница добавления учатсника
     public String add() {
         return "add-participant";
     }
@@ -56,7 +57,7 @@ public class ParticipantController {
         return "redirect:/successful-part-reg";
     }
 
-    @GetMapping("/successful-part-reg")
+    @GetMapping("/successful-part-reg")                             //Успешное добавление участника
     public String successReg() {
         return "successful-part-reg";
     }

@@ -5,7 +5,7 @@ import java.util.Random;
 
 @Entity
 @Table(name = "participants")
-public class Participant {
+public class Participant {                                      //Класс участника
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

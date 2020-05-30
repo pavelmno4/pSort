@@ -21,18 +21,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/",
+                    .antMatchers("/",       //Страницы, которые доступны для
+                                                        // неатворизированных пользователей
                             "/add-participant",
                             "/successful-part-reg",
                             "/static/**"
                             ).permitAll()
                     .anyRequest().authenticated()
                 .and()
-                    .formLogin()
+                    .formLogin()                           //Страница логина
                     .loginPage("/login")
                     .permitAll()
                 .and()
-                    .logout()
+                    .logout()                               //Страницы доступные для
+                                                            //авторизованных пользавателей
                     .permitAll();
     }
 

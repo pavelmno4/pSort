@@ -18,11 +18,12 @@ public class UserService implements UserDetailsService {
     private UserRepo userRepo;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { //Поиск пользователя
+                                                                                              //по имени
         return userRepo.findByUsername(username);
     }
 
-    public boolean addUser(User user) {
+    public boolean addUser(User user) {                                     //Добавить пользователя
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
         if(userFromDb != null) {
@@ -38,9 +39,10 @@ public class UserService implements UserDetailsService {
 
     public List<User> findAll() {
         return userRepo.findAll();
-    }
+    }               //Поиск всех пользователей
 
-    public void saveUser(User user, String username, Map<String, String> form) {
+    public void saveUser(User user, String username, Map<String, String> form) {  //Сохранить пользователя
+                                                                                  //с установленным именем и ролями
         user.setUsername(username);
 
         Set<String> roles = Arrays.stream(Role.values())
