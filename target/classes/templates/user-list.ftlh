@@ -2,7 +2,7 @@
 
 <@c.page>
 
-<a href="/registration">Add new user</a>
+<div><a href="/registration">Add new user</a></div>
 
 <p>List of users</p>
 

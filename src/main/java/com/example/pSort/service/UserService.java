@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,6 +18,9 @@ import java.util.stream.Collectors;
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException { //Поиск пользователя
@@ -32,6 +37,8 @@ public class UserService implements UserDetailsService {
 
         user.setRoles(Collections.singleton(Role.USER));
         user.setActive(true);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         userRepo.save(user);
 
         return true;
@@ -41,7 +48,7 @@ public class UserService implements UserDetailsService {
         return userRepo.findAll();
     }               //Поиск всех пользователей
 
-    public void saveUser(User user, String username, Map<String, String> form) {  //Сохранить пользователя
+    public void saveUser(User user, String username, Map<String, String> form, String password) {  //Сохранить пользователя
                                                                                   //с установленным именем и ролями
         user.setUsername(username);
 
@@ -55,6 +62,16 @@ public class UserService implements UserDetailsService {
             if(roles.contains(key)) {
                 user.getRoles().add(Role.valueOf(key));
             }
+        }
+
+        user.setPassword(passwordEncoder.encode(password));
+
+        userRepo.save(user);
+    }
+
+    public void updateProfile(User user, String password) {
+        if(!StringUtils.isEmpty(password)) {
+            user.setPassword(password);
         }
 
         userRepo.save(user);
