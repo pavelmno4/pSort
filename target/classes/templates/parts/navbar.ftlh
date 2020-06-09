@@ -10,6 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+                <!-- Обработка этого пункта меню в разработке -->
                 <a class="nav-link" href="/">Скачать положение</a>
             </li>
             <li class="nav-item">
@@ -26,11 +27,12 @@
             </li>
             </#if>
             <li class="nav-item">
+                <!-- Обработка этого пункта меню в разработке -->
                 <a class="nav-link" href="/">Контакты</a>
             </li>
         </ul>
 
-        <div class="navbar-text mr-3">${name}</div>
+    <div class="navbar-text mr-3"><#if user??>${name}</#if></div>
         <@l.logout />
     </div>
 </nav>
